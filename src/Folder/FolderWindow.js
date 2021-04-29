@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import File from "../File/File";
-import Folder from "./Folder";
 import "./FolderWindow.css";
 
 const FolderWindow = (props) => {
@@ -14,6 +13,7 @@ const FolderWindow = (props) => {
 
   return (
     <div className="folder-window">
+      <p>{props.name}</p>
       {props.files.map((fileObject) => {
         return (
           <File

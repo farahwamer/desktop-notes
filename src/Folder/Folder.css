@@ -20,3 +20,11 @@
 .folder-container {
   display: flex;
 }
+
+.folder-name {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  width: 95px;
+  resize: none;
+}

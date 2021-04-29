@@ -2,17 +2,17 @@ import React, { useState } from "react";
 import "./Folder.css";
 import FolderWindow from "./FolderWindow";
 import { v4 as uuidv4 } from "uuid";
-const Folder = () => {
+const Folder = (props) => {
   const [files, setFiles] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
+
+  const [name, setName] = useState(props.folderTitle);
 
   const newFile = () => {
     if (files.length === 0) {
       setFiles([{ title: "", body: "", id: uuidv4() }]);
-      console.log(files);
     } else {
       setFiles((files) => [...files, { title: "", body: "", id: uuidv4() }]);
-      console.log(files);
     }
   };
 
@@ -30,10 +30,18 @@ const Folder = () => {
     <div className="folder-container">
       <div className="folder">
         <div className="folder-icon" onClick={() => setIsOpen(!isOpen)}></div>
-        <p>folder</p>
+        <textarea
+          type="text"
+          placeholder="folder"
+          value={name}
+          onChange={(event) => setName(event.target.value)}
+          className="folder-name"
+          maxLength="22"
+        />
       </div>
       {isOpen ? (
         <FolderWindow
+          name={name}
           files={files}
           newFile={newFile}
           saveFile={saveFile}
@@ -42,6 +50,10 @@ const Folder = () => {
       ) : null}
     </div>
   );
+};
+
+Folder.defaultProps = {
+  folderTitle: "",
 };
 
 export default Folder;
