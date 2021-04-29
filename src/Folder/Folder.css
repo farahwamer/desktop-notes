@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.folder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 150px;
+  width: 140px;
+}
+
+.folder-icon {
+  height: 100px;
+  width: 90px;
+  background-color: lightpink;
+}
+
+.folder-container {
+  display: flex;
+}

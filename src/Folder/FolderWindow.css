@@ -1,0 +1,9 @@
+.folder-window {
+  display: flex;
+  flex-wrap: wrap;
+  overflow-x: wrap;
+  overflow-y: scroll;
+  background: rgba(0, 0, 0, 0.4);
+  height: 300px;
+  width: 550px;
+}
