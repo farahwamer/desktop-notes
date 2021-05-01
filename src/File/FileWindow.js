@@ -65,7 +65,12 @@ const FileWindow = (props) => {
             value={props.title}
             onChange={props.changeTitle}
           />
-          <hr className="title-line" />
+          <hr
+            className="title-line"
+            style={
+              props.theme === "peach" ? { backgroundColor: "#F3A493" } : null
+            }
+          />
         </div>
 
         <textarea
@@ -80,7 +85,10 @@ const FileWindow = (props) => {
           onClick={
             props.inFolder
               ? (props.saveFile(title, body, props.id), props.closeWindow)
-              : null
+              : props.closeWindow
+          }
+          style={
+            props.theme === "peach" ? { backgroundColor: "#F3A493" } : null
           }
         >
           Save

@@ -4,6 +4,7 @@ import { AiFillCaretRight, AiFillCaretDown } from "react-icons/ai";
 
 const MainMenu = (props) => {
   const [subMenu, setSubMenu] = useState(false);
+
   return (
     <div style={props.style}>
       <ul className="context-menu" style={props.style}>
@@ -38,10 +39,16 @@ const MainMenu = (props) => {
             id="sub-context-menu"
             onMouseLeave={() => setSubMenu(false)}
           >
-            <div className="item-container">
+            <div
+              className="item-container"
+              onClick={() => props.setTheme("berry")}
+            >
               <li className="item">Cool Berry</li>
             </div>
-            <div className="item-container">
+            <div
+              className="item-container"
+              onClick={() => props.setTheme("peach")}
+            >
               <li className="item">Peachy</li>
             </div>
           </ul>

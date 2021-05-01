@@ -10,14 +10,17 @@ function App() {
   const [isMainMenuShowing, setIsMainMenuShowing] = useState(false);
   const [menuStyle, setMenuStyle] = useState({});
   const [prompt, setPrompt] = useState(true);
+  const [theme, setTheme] = useState("berry");
 
   const handleContextMenu = (event) => {
-    if (event.target.className === "app") {
+    if (
+      event.target.className === "app-berry" ||
+      event.target.className === "app-peach"
+    ) {
       event.preventDefault();
       setIsMainMenuShowing(true);
       var y = event.offsetY;
       var x = event.offsetX;
-      console.log(event.target.className);
       setMenuStyle({
         top: `${y}px`,
         left: `${x}px`,
@@ -44,7 +47,6 @@ function App() {
         type: "file",
       },
     ]);
-    console.log(obj);
   };
 
   const newFolder = (event) => {
@@ -75,9 +77,11 @@ function App() {
     obj[index].files = files;
   };
 
+  console.log(theme);
+
   return (
     <div
-      className="app"
+      className={theme === "berry" ? "app-berry" : "app-peach"}
       onClick={() => setIsMainMenuShowing(false)}
       onContextMenu={() => setPrompt(false)}
     >
@@ -86,6 +90,7 @@ function App() {
         <MainMenu
           newFile={newFile}
           newFolder={newFolder}
+          setTheme={setTheme}
           delete={deleteObj}
           saveFile={saveFile}
           saveFolder={saveFolder}
@@ -99,6 +104,7 @@ function App() {
             <File
               fileTitle={obj.title}
               fileBody={obj.body}
+              theme={theme}
               id={obj.id}
               key={obj.id}
             />
@@ -108,6 +114,7 @@ function App() {
             <Folder
               folderTitle={obj.title}
               folderFiles={obj.files}
+              theme={theme}
               id={obj.id}
               key={obj.id}
             />

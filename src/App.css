@@ -1,4 +1,4 @@
-.app {
+.app-berry {
   padding-top: 45px;
   height: 100vh;
   width: 100vw;
@@ -11,6 +11,18 @@
   overflow: hidden;
 }
 
+.app-peach {
+  padding-top: 45px;
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(176.1deg, #f3a493 -7.97%, #e36b77 134.17%);
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+  overflow: hidden;
+}
 .prompt {
   left: 0;
   line-height: 200px;

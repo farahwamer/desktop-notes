@@ -54,8 +54,6 @@ const File = (props) => {
     }
   };
 
-  console.log(isOpen);
-
   if (!isAlive) {
     return null;
   }
@@ -73,7 +71,7 @@ const File = (props) => {
           onContextMenu={handleContextMenu}
         >
           <img
-            src={process.env.PUBLIC_URL + "img/file-berry.svg"}
+            src={process.env.PUBLIC_URL + `img/file-${props.theme}.svg`}
             className="file-icon"
             alt="file icon"
           />
@@ -91,6 +89,7 @@ const File = (props) => {
           deleteFile={deleteFile}
           closeWindow={closeWindow}
           inFolder={props.inFolder}
+          theme={props.theme}
         />
       ) : null}
       {deleteMenu ? (

@@ -80,7 +80,7 @@ const Folder = (props) => {
           onContextMenu={handleContextMenu}
         >
           <img
-            src={process.env.PUBLIC_URL + `img/folder-berry.svg`}
+            src={process.env.PUBLIC_URL + `img/folder-${props.theme}.svg`}
             alt="folder icon"
             className="folder-icon"
           />
@@ -102,6 +102,7 @@ const Folder = (props) => {
           saveFile={saveFile}
           deleteFile={deleteFile}
           closeFile={() => setIsOpen(false)}
+          theme={props.theme}
         />
       ) : null}
       {deleteMenu ? (

@@ -32,6 +32,7 @@ const FolderWindow = (props) => {
               deleteFile={deleteFile}
               inFolder={true}
               key={fileObject.id}
+              theme={props.theme}
             />
           );
         })}
