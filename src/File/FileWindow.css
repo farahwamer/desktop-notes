@@ -1,11 +1,127 @@
-.fileWindow {
-  display: flex;
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.file-window {
   position: absolute;
-  right: 7%;
-  top: 20%;
+  display: flex;
   flex-direction: column;
-  width: 400px;
-  height: 300px;
-  background-color: bisque;
-  justify-content: space-evenly;
+  right: 3%;
+  top: 10%;
+  width: 91vh;
+  margin: 10px;
+  cursor: move;
+  z-index: 4;
+}
+
+.file-window-in-folder {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: 10%;
+  width: 91vh;
+  margin: 10px;
+  cursor: move;
+  z-index: 1;
+}
+
+.file-header {
+  background-color: #333333;
+  height: 3.5vh;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  margin-bottom: 0;
+}
+
+/* #fffcfc */
+.file-body {
+  display: flex;
+  flex-direction: column;
+  background-color: #fffcfc;
+  height: 75vh;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  margin-top: 0;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.close-button {
+  color: #e17373;
+  margin: 6.5px;
+  margin-left: 13px;
+}
+
+.close-button:hover {
+  color: #ba5b5b;
+  transition: all 0.1s ease-in-out;
+  cursor: pointer;
+}
+
+.title {
+  padding: 30px;
+}
+
+.title-input {
+  background-color: transparent;
+  height: 4rem;
+  border: none;
+  outline: none;
+  font-family: "Nunito", sans-serif;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 50px;
+  color: #646161;
+}
+
+.title-line {
+  width: 20%;
+  height: 3px;
+  border: none;
+  background-color: #a96d83;
+  margin-right: 30px;
+}
+
+.title-input:hover {
+  font-size: 37px;
+  transition: font-size 0.1s ease-in;
+}
+
+.text-body-input {
+  margin-left: 30px;
+  margin-bottom: 20px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  color: #646161;
+  overflow-y: scroll;
+  resize: none;
+  width: 90%;
+  height: 60%;
+}
+
+.text-body-input:hover {
+  font-size: 17px;
+  transition: all 0.1s ease-in;
+}
+
+.text-body-button {
+  margin-left: 84%;
+  border: none;
+  outline: none;
+  padding: 10px 15px;
+  border-radius: 19px;
+  font-family: "Nunito", sans-serif;
+  font-weight: 900;
+  background-color: #cd6077;
+  color: #fffcfc;
+  width: 75px;
+}
+
+.text-body-button:hover {
+  background-color: #c57164;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
 }

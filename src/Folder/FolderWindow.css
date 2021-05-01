@@ -1,9 +1,84 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .folder-window {
+  display: flex;
+  position: absolute;
+  top: 10px;
+  left: 300px;
+  z-index: 2;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.4);
+  width: 620.55px;
+  height: 389px;
+  border-radius: 15px;
+}
+
+.folder-header {
+  display: flex;
+  align-items: center;
+  background-color: #333333;
+  height: 3.5vh;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.folder-body {
   display: flex;
   flex-wrap: wrap;
   overflow-x: wrap;
-  overflow-y: scroll;
-  background: rgba(0, 0, 0, 0.4);
-  height: 300px;
-  width: 550px;
+  overflow-y: scroll !important;
+  width: 620px;
+  height: 278px;
+  padding: 30px;
+}
+
+.folder-footer {
+  width: 620px;
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+}
+
+.folder-window-button {
+  width: 112px;
+  height: 40px;
+  margin-top: 3%;
+  margin-left: 79%;
+  border: none;
+  outline: none;
+  padding: 10px 15px;
+  border-radius: 19px;
+  font-family: "Nunito", sans-serif;
+  font-weight: 900;
+  background-color: #cd6077;
+  color: #fffcfc;
+}
+
+.folder-window-button:hover {
+  background-color: #c57164;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.folder-title {
+  margin-left: 30px;
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  color: #ffeded;
+}
+
+.folder-close-button {
+  color: #e17373;
+  margin: 4.5px;
+  margin-left: 13px;
+}
+
+.folder-close-button:hover {
+  color: #ba5b5b;
+  transition: all 0.1s ease-in-out;
+  cursor: pointer;
 }

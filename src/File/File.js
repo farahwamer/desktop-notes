@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import SubMenu from "../SubMenu";
 import "./File.css";
 import FileWindow from "./FileWindow";
-import { AiFillCloseCircle } from "react-icons/ai";
 
 const File = (props) => {
   const [title, setTitle] = useState(props.fileTitle);
@@ -55,6 +54,8 @@ const File = (props) => {
     }
   };
 
+  console.log(isOpen);
+
   if (!isAlive) {
     return null;
   }
@@ -89,6 +90,7 @@ const File = (props) => {
           saveFile={saveFile}
           deleteFile={deleteFile}
           closeWindow={closeWindow}
+          inFolder={props.inFolder}
         />
       ) : null}
       {deleteMenu ? (

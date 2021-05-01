@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./FileWindow.css";
+import { AiFillCloseCircle } from "react-icons/ai";
 
 const FileWindow = (props) => {
   var title = props.title;
@@ -21,6 +22,7 @@ const FileWindow = (props) => {
     if (windowIsDragging) {
       var left = e.screenX - diffX;
       var top = e.screenY - diffY;
+
       setWindowStyles({
         position: "absolute",
         left: left,
@@ -34,37 +36,63 @@ const FileWindow = (props) => {
   };
   return (
     <div
-      className="fileWindow"
-      style={didMove ? windowStyles : null}
+      className={!props.inFolder ? "file-window" : "file-window-in-folder"}
+      style={didMove ? windowStyles : {}}
       onMouseOver={() => setDidMove(true)}
       onMouseDown={windowDragStart}
       onMouseMove={windowDragging}
       onMouseUp={windowDragEnd}
       onMouseLeave={windowDragEnd}
     >
-      <input
-        placeholder="TITLE"
-        type="text"
-        value={props.title}
-        onChange={props.changeTitle}
-      />
-      <textarea
-        placeholder="Notes go here..."
-        type="text"
-        value={props.body}
-        onChange={props.changeBody}
-      />
-      <button
-        onClick={(props.saveFile(title, body, props.id), props.closeWindow)}
+      <div
+        className="file-header"
+        onMouseDown={windowDragStart}
+        onMouseMove={windowDragging}
+        onMouseUp={windowDragEnd}
       >
-        Save
-      </button>
+        <AiFillCloseCircle
+          className="close-button"
+          size={13}
+          onClick={props.closeWindow}
+        />
+      </div>
+      <div className="file-body">
+        <div className="title">
+          <input
+            className="title-input"
+            placeholder="TITLE"
+            type="text"
+            value={props.title}
+            onChange={props.changeTitle}
+          />
+          <hr className="title-line" />
+        </div>
+
+        <textarea
+          placeholder="Notes go here..."
+          type="text"
+          value={props.body}
+          onChange={props.changeBody}
+          className="text-body-input"
+        />
+        <button
+          className="text-body-button"
+          onClick={
+            props.inFolder
+              ? (props.saveFile(title, body, props.id), props.closeWindow)
+              : null
+          }
+        >
+          Save
+        </button>
+      </div>
     </div>
   );
 };
 
 FileWindow.defaultProps = {
   drag: true,
+  inFolder: false,
 };
 
 export default FileWindow;

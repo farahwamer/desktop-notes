@@ -9,6 +9,7 @@ function App() {
   const [obj, setObj] = useState([]);
   const [isMainMenuShowing, setIsMainMenuShowing] = useState(false);
   const [menuStyle, setMenuStyle] = useState({});
+  const [prompt, setPrompt] = useState(true);
 
   const handleContextMenu = (event) => {
     if (event.target.className === "app") {
@@ -75,7 +76,12 @@ function App() {
   };
 
   return (
-    <div className="app" onClick={() => setIsMainMenuShowing(false)}>
+    <div
+      className="app"
+      onClick={() => setIsMainMenuShowing(false)}
+      onContextMenu={() => setPrompt(false)}
+    >
+      {prompt ? <p className="prompt">Right Click Anywhere to Start</p> : null}
       {isMainMenuShowing ? (
         <MainMenu
           newFile={newFile}
@@ -86,8 +92,6 @@ function App() {
           style={menuStyle}
         />
       ) : null}
-
-      {}
 
       {obj.map((obj) => {
         if (obj.type === "file") {
@@ -110,7 +114,6 @@ function App() {
           );
         }
       })}
-      {/* <File /> */}
     </div>
   );
 }

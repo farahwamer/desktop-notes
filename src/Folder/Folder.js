@@ -78,7 +78,13 @@ const Folder = (props) => {
           className="folder-icon"
           onDoubleClick={() => setIsOpen(!isOpen)}
           onContextMenu={handleContextMenu}
-        ></div>
+        >
+          <img
+            src={process.env.PUBLIC_URL + `img/folder-berry.svg`}
+            alt="folder icon"
+            className="folder-icon"
+          />
+        </div>
         <textarea
           type="text"
           placeholder="folder"
@@ -95,6 +101,7 @@ const Folder = (props) => {
           newFile={newFile}
           saveFile={saveFile}
           deleteFile={deleteFile}
+          closeFile={() => setIsOpen(false)}
         />
       ) : null}
       {deleteMenu ? (

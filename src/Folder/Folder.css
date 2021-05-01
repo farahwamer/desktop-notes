@@ -16,15 +16,24 @@
 }
 
 .folder-icon {
-  height: 100px;
-  width: 90px;
-  background-color: lightpink;
+  width: 86.25px;
+  height: 61.35px;
 }
 
 .folder-name {
   background-color: transparent;
+  font-family: "Open Sans", sans-serif;
+  font-size: 13px;
+  color: #ffeded;
   border: none;
   outline: none;
   width: 95px;
   resize: none;
+  text-align: center;
+  margin-top: 5px;
+  overflow: hidden;
+}
+
+.folder-name::placeholder {
+  color: #e4cccc;
 }
