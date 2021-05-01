@@ -1,7 +1,12 @@
 .app {
+  padding: 20px;
   height: 100vh;
   width: 100vw;
   background: linear-gradient(176.1deg, #658498 -7.97%, #cd6077 134.17%);
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+  overflow: hidden;
 }

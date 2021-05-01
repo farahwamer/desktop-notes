@@ -1,19 +1,54 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import SubMenu from "../SubMenu";
 import "./File.css";
 import FileWindow from "./FileWindow";
+import { AiFillCloseCircle } from "react-icons/ai";
 
 const File = (props) => {
   const [title, setTitle] = useState(props.fileTitle);
   const [body, setBody] = useState(props.fileBody);
+  const [deleteMenu, setDeleteMenu] = useState(false);
+  const [deleteMenuStyle, setDeleteMenuStyle] = useState({});
 
   const [isOpen, setIsOpen] = useState(false);
   const [isAlive, setIsAlive] = useState(true);
+
+  const removeDefaultContext = (event) => {
+    event.preventDefault();
+  };
+
+  useEffect(() => {
+    window.addEventListener("contextmenu", removeDefaultContext);
+    setDeleteMenu(false);
+
+    return () => {
+      window.removeEventListener("contextmenu", removeDefaultContext);
+    };
+  }, []);
+
+  const handleContextMenu = (event) => {
+    console.log(deleteMenuStyle);
+    setDeleteMenu(true);
+    var y = event.clientY;
+    var x = event.clientX;
+    console.log(y, x);
+    setDeleteMenuStyle({
+      top: y + "px",
+      left: x + "px",
+    });
+    console.log(deleteMenuStyle);
+  };
+
+  const closeWindow = () => {
+    setIsOpen(false);
+  };
 
   const saveFile = (title, body, id) => {
     props.saveFile(title, body, id);
   };
 
   const deleteFile = () => {
+    setDeleteMenu(false);
     setIsAlive(false);
   };
 
@@ -26,10 +61,13 @@ const File = (props) => {
       <div
         className="delete-icon"
         onClick={props.inFolder ? () => props.deleteFile(props.id) : deleteFile}
-        // onClick={deleteFile}
       ></div>
       <div className="file">
-        <div className="file-icon" onClick={() => setIsOpen(!isOpen)}></div>
+        <div
+          className="file-icon"
+          onDoubleClick={() => setIsOpen(!isOpen)}
+          onContextMenu={handleContextMenu}
+        ></div>
         <p>{title}</p>
       </div>
       {isOpen ? (
@@ -41,7 +79,11 @@ const File = (props) => {
           id={props.id}
           saveFile={saveFile}
           deleteFile={deleteFile}
+          closeWindow={closeWindow}
         />
+      ) : null}
+      {deleteMenu ? (
+        <SubMenu style={deleteMenuStyle} delete={deleteFile} />
       ) : null}
     </div>
   );
@@ -54,6 +96,7 @@ File.defaultProps = {
   saveFile: function () {
     return null;
   },
+  drag: true,
 };
 
 export default File;

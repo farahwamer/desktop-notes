@@ -7,20 +7,21 @@ import { v4 as uuidv4 } from "uuid";
 
 function App() {
   const [obj, setObj] = useState([]);
-  const [isMenuShowing, setIsMenuShowing] = useState(false);
+  const [isMainMenuShowing, setIsMainMenuShowing] = useState(false);
   const [menuStyle, setMenuStyle] = useState({});
 
   const handleContextMenu = (event) => {
-    event.preventDefault();
-    setIsMenuShowing(true);
-    var y = event.offsetY;
-    var x = event.offsetX;
-    console.log(y);
-    console.log(x);
-    setMenuStyle({
-      top: `${y}px`,
-      left: `${x}px`,
-    });
+    if (event.target.className === "app") {
+      event.preventDefault();
+      setIsMainMenuShowing(true);
+      var y = event.offsetY;
+      var x = event.offsetX;
+      console.log(event.target.className);
+      setMenuStyle({
+        top: `${y}px`,
+        left: `${x}px`,
+      });
+    }
   };
 
   useEffect(() => {
@@ -31,20 +32,30 @@ function App() {
     };
   }, []);
 
-  const newFile = () => {
+  const newFile = (event) => {
+    console.log(obj);
     setObj((obj) => [
       ...obj,
-      { title: "", body: "", id: uuidv4(), type: "file" },
+      {
+        title: "",
+        body: "",
+        id: uuidv4(),
+        type: "file",
+      },
     ]);
     console.log(obj);
   };
 
-  const newFolder = () => {
+  const newFolder = (event) => {
     setObj((obj) => [
       ...obj,
-      { title: "", files: [], id: uuidv4(), type: "folder" },
+      {
+        title: "",
+        files: [],
+        id: uuidv4(),
+        type: "folder",
+      },
     ]);
-    console.log(obj);
   };
 
   const deleteObj = (id) => {
@@ -64,8 +75,8 @@ function App() {
   };
 
   return (
-    <div className="app" onClick={() => setIsMenuShowing(false)}>
-      {isMenuShowing ? (
+    <div className="app" onClick={() => setIsMainMenuShowing(false)}>
+      {/* {isMainMenuShowing ? (
         <MainMenu
           newFile={newFile}
           newFolder={newFolder}
@@ -75,6 +86,8 @@ function App() {
           style={menuStyle}
         />
       ) : null}
+
+      {}
 
       {obj.map((obj) => {
         if (obj.type === "file") {
@@ -96,7 +109,8 @@ function App() {
             />
           );
         }
-      })}
+      })} */}
+      <File />
     </div>
   );
 }
