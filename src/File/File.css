@@ -18,12 +18,15 @@
 .file-icon {
   height: 100px;
   width: 90px;
-  background-color: aqua;
 }
 
-.delete-icon {
-  height: 10px;
-  width: 10px;
-  background-color: red;
-  cursor: pointer;
+.file-title {
+  font-family: "Open Sans", sans-serif;
+  font-size: 13px;
+  color: #ffeded;
+  text-align: center;
+  margin-top: 5px;
+  user-select: none;
+  width: 70px;
+  word-wrap: break-word;
 }

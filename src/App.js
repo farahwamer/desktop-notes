@@ -76,7 +76,7 @@ function App() {
 
   return (
     <div className="app" onClick={() => setIsMainMenuShowing(false)}>
-      {/* {isMainMenuShowing ? (
+      {isMainMenuShowing ? (
         <MainMenu
           newFile={newFile}
           newFolder={newFolder}
@@ -109,8 +109,8 @@ function App() {
             />
           );
         }
-      })} */}
-      <File />
+      })}
+      {/* <File /> */}
     </div>
   );
 }

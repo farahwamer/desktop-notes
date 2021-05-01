@@ -68,7 +68,11 @@ const Folder = (props) => {
   }
 
   return (
-    <div className="folder-container">
+    <div
+      className="folder-container"
+      onClick={() => setDeleteMenu(false)}
+      onMouseLeave={() => setDeleteMenu(false)}
+    >
       <div className="folder">
         <div
           className="folder-icon"

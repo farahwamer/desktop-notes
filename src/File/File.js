@@ -50,6 +50,9 @@ const File = (props) => {
   const deleteFile = () => {
     setDeleteMenu(false);
     setIsAlive(false);
+    if (props.inFolder) {
+      props.deleteFile(props.id);
+    }
   };
 
   if (!isAlive) {
@@ -57,18 +60,24 @@ const File = (props) => {
   }
 
   return (
-    <div className="file-container">
-      <div
-        className="delete-icon"
-        onClick={props.inFolder ? () => props.deleteFile(props.id) : deleteFile}
-      ></div>
+    <div
+      className="file-container"
+      onClick={() => setDeleteMenu(false)}
+      onMouseLeave={() => setDeleteMenu(false)}
+    >
       <div className="file">
         <div
           className="file-icon"
           onDoubleClick={() => setIsOpen(!isOpen)}
           onContextMenu={handleContextMenu}
-        ></div>
-        <p>{title}</p>
+        >
+          <img
+            src={process.env.PUBLIC_URL + "img/file-berry.svg"}
+            className="file-icon"
+            alt="file icon"
+          />
+        </div>
+        <p className="file-title">{title}</p>
       </div>
       {isOpen ? (
         <FileWindow
