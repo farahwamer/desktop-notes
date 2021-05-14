@@ -38,7 +38,13 @@ const FolderWindow = (props) => {
         })}
       </div>
       <div className="folder-footer">
-        <button className="folder-window-button" onClick={props.newFile}>
+        <button
+          className="folder-window-button"
+          onClick={props.newFile}
+          style={
+            props.theme === "peach" ? { backgroundColor: "#E47A7E" } : null
+          }
+        >
           New File
         </button>
       </div>
