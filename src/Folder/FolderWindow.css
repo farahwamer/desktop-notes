@@ -6,7 +6,7 @@
 
 .folder-window {
   display: flex;
-  position: absolute;
+  position: static;
   top: 10px;
   left: 300px;
   z-index: 2;
